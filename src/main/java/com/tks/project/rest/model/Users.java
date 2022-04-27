@@ -114,6 +114,23 @@ public class Users implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
+	
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Set<Reservations> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(Set<Reservations> reservations) {
+		this.reservations = reservations;
+	}
+
 	@Override
 	public String toString() {
 		return "Users [userId=" + userId + "firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.tks.project.rest.model.Users;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users, String>{
+public interface UserRepository extends JpaRepository<Users, Long>{
 }

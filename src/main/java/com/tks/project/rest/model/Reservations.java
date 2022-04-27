@@ -20,7 +20,7 @@ public class Reservations implements Serializable {
 
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private long id; 
+private Long id; 
 @Column
 private int reservationNo;
 @Column
@@ -74,6 +74,20 @@ public String getCheckoutDate() {
 
 public void setCheckoutDate(String checkoutDate) {
 	this.checkoutDate = checkoutDate;
+}
+
+
+
+public Users getUsers() {
+	return users;
+}
+
+public void setUsers(Users users) {
+	this.users = users;
+}
+
+public void setId(long id) {
+	this.id = id;
 }
 
 @Override
