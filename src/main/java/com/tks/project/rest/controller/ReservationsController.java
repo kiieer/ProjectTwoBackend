@@ -6,6 +6,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.tks.project.rest.repository.ReservationsRepository;
 import com.tks.project.rest.repository.UserRepository;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200/")
 public class ReservationsController {
 
 @Autowired
@@ -42,7 +44,7 @@ public void createReservation(@PathVariable("userId") Long userId, @RequestBody 
 	reservationRepository.save(reserve);
 }
 
-@GetMapping("/reserve")
+@GetMapping("/reserve/{userId}")
 public List<Reservations> getAllReservations () {
 	return reservationRepository.findAll();
 }
