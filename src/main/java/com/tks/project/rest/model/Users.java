@@ -1,25 +1,26 @@
 package com.tks.project.rest.model;
 
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users_model")
-public class Users {
+@Table(name="users")
+public class Users implements Serializable {
 	
 	@Id
-	@GeneratedValue
-	private int userId;
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long userId;
 
 	@Column
 	private String firstName;
@@ -35,6 +36,11 @@ public class Users {
 	private boolean mailingList;
 	@Column
 	private Long phoneNumber;
+	
+	
+    @OneToMany(mappedBy = "users", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    private Set<Reservations> reservations;
 	
 	public Users() {
 		super();
@@ -106,6 +112,23 @@ public class Users {
 
 	public void setPhoneNumber(Long phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Set<Reservations> getReservations() {
+		return reservations;
+	}
+
+	public void setReservations(Set<Reservations> reservations) {
+		this.reservations = reservations;
 	}
 
 	@Override

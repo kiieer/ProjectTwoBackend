@@ -1,18 +1,26 @@
 package com.tks.project.rest.model;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="reservations_model")
-public class Reservations {
+@Table(name="reservations")
+public class Reservations implements Serializable {
 
 @Id
-@GeneratedValue
-private int id; 
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id; 
 @Column
 private int reservationNo;
 @Column
@@ -20,22 +28,27 @@ private String checkinDate;
 @Column
 private String checkoutDate;
 
+@ManyToOne(fetch = FetchType.LAZY, optional = false)
+@JoinColumn(name = "user_id", nullable = false)
+private Users users;
+
 public Reservations() {
 	super();
 }
 
-public Reservations(int reservationNo, String checkinDate, String checkoutDate) {
+public Reservations(int reservationNo, String checkinDate, String checkoutDate, Users users) {
 	super();
 	this.reservationNo = reservationNo;
 	this.checkinDate = checkinDate;
 	this.checkoutDate = checkoutDate;
+	this.users = users;
 }
 
-public int getId() {
+public Long getId() {
 	return id;
 }
 
-public void setId(int id) {
+public void setId(Long id) {
 	this.id = id;
 }
 
@@ -61,6 +74,20 @@ public String getCheckoutDate() {
 
 public void setCheckoutDate(String checkoutDate) {
 	this.checkoutDate = checkoutDate;
+}
+
+
+
+public Users getUsers() {
+	return users;
+}
+
+public void setUsers(Users users) {
+	this.users = users;
+}
+
+public void setId(long id) {
+	this.id = id;
 }
 
 @Override
