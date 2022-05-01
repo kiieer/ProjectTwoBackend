@@ -95,6 +95,5 @@ public String toString() {
 	return "Reservations [id=" + id + ", reservationNo=" + reservationNo + ", checkinDate=" + checkinDate
 			+ ", checkoutDate=" + checkoutDate + "]";
 }
-	
 
 }

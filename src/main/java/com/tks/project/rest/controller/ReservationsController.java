@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tks.project.rest.model.FilteredReservations;
 import com.tks.project.rest.model.Reservations;
 import com.tks.project.rest.model.Users;
+import com.tks.project.rest.repository.LoginRepository;
 import com.tks.project.rest.repository.ReservationsRepository;
 import com.tks.project.rest.repository.UserRepository;
 
@@ -27,6 +29,10 @@ ReservationsRepository reservationRepository;
 
 @Autowired
 UserRepository userRepository; 
+
+@Autowired
+LoginRepository loginRepository; 
+
 
 //@PostMapping("/reserve")
 //public Reservations createReservation (@RequestBody Reservations reserve) {
@@ -44,8 +50,14 @@ public void createReservation(@PathVariable("userId") Long userId, @RequestBody 
 	reservationRepository.save(reserve);
 }
 
-@GetMapping("/reserve/{userId}")
+@GetMapping("/reserve")
 public List<Reservations> getAllReservations () {
 	return reservationRepository.findAll();
 }
+	
+	@CrossOrigin(origins = "http://localhost:4200/")
+	  @GetMapping("/reserve/{id}") public List<FilteredReservations>
+	  getReservationsById(@PathVariable("id") Long id){ return
+	  loginRepository.findReservationsById(id); }
+
 }
