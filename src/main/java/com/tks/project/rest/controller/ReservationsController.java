@@ -56,7 +56,7 @@ public List<Reservations> getAllReservations () {
 }
 	
 	@CrossOrigin(origins = "http://localhost:4200/")
-	  @GetMapping("/reserve/{id}") public List<FilteredReservations>
+	  @GetMapping("/reserve/{id}") public List<Reservations>
 	  getReservationsById(@PathVariable("id") Long id){ return
 	  loginRepository.findReservationsById(id); }
 

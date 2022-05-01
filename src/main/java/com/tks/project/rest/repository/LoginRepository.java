@@ -20,7 +20,8 @@ public interface LoginRepository extends JpaRepository<Users, Long> {
 	  @Query(value="select e.user_id from Users e where e.username = :username and e.password = :password", nativeQuery = true) Long
 	  findUserIdByLogin(@Param("username") String userName, @Param("password") String password);
 	  	  
-	  @Query("select new com.tks.project.rest.model.FilteredReservations(e.checkinDate, e.checkoutDate, e.reservationNo) from Reservations e where e.users.id = :id") List<FilteredReservations>
+//	  @Query("select new com.tks.project.rest.model.FilteredReservations(e.checkinDate, e.checkoutDate, e.reservationNo) from Reservations e where e.users.id = :id") List<FilteredReservations>
+//	  findReservationsById(@Param("id") Long id);
+	  @Query("select e from Reservations e where e.users.id= :id") List<Reservations>
 	  findReservationsById(@Param("id") Long id);
-
 }
