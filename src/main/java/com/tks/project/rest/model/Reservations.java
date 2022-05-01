@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="reservations")
 public class Reservations implements Serializable {
@@ -21,7 +23,8 @@ public class Reservations implements Serializable {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Long id; 
-@Column
+@Column(insertable = false,
+        nullable = false, unique = true, columnDefinition = "bigserial")
 private int reservationNo;
 @Column
 private String checkinDate;
@@ -30,6 +33,7 @@ private String checkoutDate;
 
 @ManyToOne(fetch = FetchType.LAZY, optional = false)
 @JoinColumn(name = "user_id", nullable = false)
+@JsonIgnore
 private Users users;
 
 public Reservations() {
@@ -95,6 +99,5 @@ public String toString() {
 	return "Reservations [id=" + id + ", reservationNo=" + reservationNo + ", checkinDate=" + checkinDate
 			+ ", checkoutDate=" + checkoutDate + "]";
 }
-	
 
 }

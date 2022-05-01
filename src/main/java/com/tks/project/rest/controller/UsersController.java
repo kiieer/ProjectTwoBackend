@@ -40,6 +40,11 @@ public class UsersController {
 	  @GetMapping("/user/{username}/{password}") public List<Users>
 	  getUsersByName(@PathVariable("username") String username, @PathVariable("password") String password){ return
 	  loginRepository.findUserByLogin(username, password); }
+	
+	@CrossOrigin(origins = "http://localhost:4200/")
+	  @GetMapping("/id/{username}/{password}") public Long
+	  getUsersById(@PathVariable("username") String username, @PathVariable("password") String password){ return
+	  loginRepository.findUserIdByLogin(username, password); }
 	 
 }
 
