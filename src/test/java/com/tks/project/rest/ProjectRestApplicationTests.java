@@ -42,6 +42,11 @@ class ProjectRestApplicationTests {
 	@Test
     public void gettingAllUsers
     () {
+		
+		Users user = new Users("Jack","Che","TharjaBestGirl","1","1",false,123L);
+		Users user2 = new Users("Jack","Che","TharjaBestGirl","1","1",false,123L);
+		Users user3 = new Users("Jack","Che","TharjaBestGirl","1","1",false,123L);
+		
 		Assertions.assertEquals(1, 1);
     }
 	
@@ -49,6 +54,9 @@ class ProjectRestApplicationTests {
 	@Test
     public void gettingUserById
     () {
+		
+		Users user = new Users("Jack","Che","TharjaBestGirl","1","1",false,123L);
+		
 		Assertions.assertEquals(1, 1);
     }
 	
@@ -57,6 +65,8 @@ class ProjectRestApplicationTests {
 	@Test
     public void createUser
     () {
+		
+		Users user = new Users("Jack","Che","TharjaBestGirl","1","1",false,123L);
 		Assertions.assertEquals(1, 1);
     }
 	/*
@@ -87,29 +97,4 @@ class ProjectRestApplicationTests {
     () {
 		Assertions.assertEquals(1, 1);
     }
-	*/
-
-	//@Autowired
-	//MockMvc mockMvc;
-	
-	/*@MockBean
-    ReservationsRepository resRepository;
-	@MockBean
-    UserRepository userRepository;
-	
-	@Order(2)
-	@Test
-    public void testfindAll() throws Exception {
-        Users user = new Users("Jack" , "Che" , "TharjaBestGirl", "123456" , "j@k.com" , false, 1234567890L);
-        List<Users> users = Arrays.asList(user);
-
-        Mockito.when(userRepository.findAll()).thenReturn(users);
-
-        mockMvc.perform(get("/api/v1/Users"))
-                .andExpect(status().isOk())
-                //.andExpect(jsonPath("$", Matchers.hasSize(1)))
-                //.andExpect(jsonPath("$[0].firstname", Matchers.is("Jack")))
-                ;
-    }
-	*/
 }
