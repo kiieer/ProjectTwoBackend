@@ -5,7 +5,7 @@
 # Bikini Bottom
 
 ## Project Description
-For project 2, we were given the opportunity to develop our own project requirements. Our team decided to create a hotel website that requires users, reservations, and a variety of sign up options. We have room service, daily themed events, and plenty of restaurants for you to wine and dine. For this project, we used Angular for front end development and Java with Spring Boot for the back end functionality. 
+For project 2, we were given the opportunity to develop our own project requirements. Our team decided to create a hotel website that requires users, reservations, and offers a variety of sign up options. We have room service, daily themed events, and plenty of restaurants for you to wine and dine. Primarily, we used Angular for front end development and Java with Spring Boot for the back end functionality. 
 
 ## Technologies Used
   * This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.2.
@@ -32,7 +32,7 @@ Below are the features successfully implemented in this website. We will continu
 
 ## Getting Started
 
-### Development server
+### Development Server
 * Open GitHub.
 * Go to repository page and copy the following code: [kiieer/kiieer.github.io](https://github.com/kiieer/kiieer.github.io).
 * Copy the above URL into GitBash terminal.
