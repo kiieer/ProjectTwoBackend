@@ -14,48 +14,72 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="users")
 public class Users implements Serializable {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userId;
 
-	@Column
-	private String firstName;
-	@Column
-	private String lastName;
-	@Column
-	private String username;
-	@Column
-	private String password;
-	@Column
-	private String email;
-	@Column
-	private boolean mailingList;
-	@Column
-	private Long phoneNumber;
-	
-	
+    @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @Column
+    private String username;
+    @Column
+    private String password;
+    @Column
+    private String email;
+    @Column
+    private boolean mailingList;
+    @Column
+    private Long phoneNumber;
+    @Column
+    private String resetToken;
+  
+    
     @OneToMany(mappedBy = "users", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Reservations> reservations;
-	
-	public Users() {
+    
+    
+
+    public Users() {
 		super();
 	}
 
 	public Users(String firstName, String lastName, String username, String password, String email, boolean mailingList,
-			Long phoneNumber) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-		this.mailingList = mailingList;
-		this.phoneNumber = phoneNumber;
+            Long phoneNumber, String resetToken) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.mailingList = mailingList;
+        this.phoneNumber = phoneNumber;
+        this.resetToken= resetToken; 
+    }
+    
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
+    }
+
+    public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -114,15 +138,6 @@ public class Users implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
 	public Set<Reservations> getReservations() {
 		return reservations;
 	}
@@ -132,10 +147,10 @@ public class Users implements Serializable {
 	}
 
 	@Override
-	public String toString() {
-		return "Users [userId=" + userId + "firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
-				+ password + ", email=" + email + ", mailingList=" + mailingList + ", phoneNumber=" + phoneNumber + "]";
-	}
-	
-	
+    public String toString() {
+        return "Users [userId=" + userId + "firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
+                + password + ", email=" + email + ", mailingList=" + mailingList + ", phoneNumber=" + phoneNumber + ", resetToken=" + resetToken + "]";
+    }
+    
+    
 }

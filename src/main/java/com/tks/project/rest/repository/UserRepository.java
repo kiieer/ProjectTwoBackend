@@ -11,6 +11,7 @@ import com.tks.project.rest.model.Users;
 
 @Repository
 public interface UserRepository extends JpaRepository<Users, Long>{
-
+    Users findByEmail(String email);
+    Users findByResetToken(String resetToken);
 	 
 }
